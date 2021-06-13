@@ -1,6 +1,9 @@
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+#include <stdio.h>
 #include "sprite.h"
 
-void Sprite_LoadImage(SDL_Renderer* renderer, Sprite* sprite, char imgPath[]) {
+void Sprite_LoadImage(SDL_Renderer *renderer, Sprite *sprite, char imgPath[]) {
 	int w, h;
 	
 	SDL_Surface* temp = IMG_Load(imgPath);
@@ -18,11 +21,11 @@ void Sprite_LoadImage(SDL_Renderer* renderer, Sprite* sprite, char imgPath[]) {
 	sprite->texr.h = h*2;
 }
 
-void Sprite_SetPosition(Sprite* sprite, int x, int y) {
+void Sprite_SetPosition(Sprite *sprite, int x, int y) {
 	sprite->texr.x = x;
 	sprite->texr.y = y;
 }
 
-void Sprite_Dispose(Sprite* sprite) {
+void Sprite_Dispose(Sprite *sprite) {
 	SDL_DestroyTexture(sprite->img);
 }

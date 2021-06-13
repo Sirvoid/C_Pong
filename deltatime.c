@@ -1,4 +1,11 @@
 #include "deltatime.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include <sys/time.h>
+
+int64_t _old_time;
+float deltaTime;
 
 int64_t currentTimeMs() {
   struct timeval time;

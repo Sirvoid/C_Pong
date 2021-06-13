@@ -6,14 +6,13 @@
 #include <sys/time.h>
 #include <stdlib.h>
 #include <math.h>
-#include "deltatime.c"
 
-#define WIDTH 250
-#define HEIGHT 400
-#define ENTITY_NB 3
-
-#include "sprite.c"
-#include "entity.c"
+#include "main.h"
+#include "deltatime.h"
+#include "sprite.h"
+#include "entity.h"
+#include "ball.h"
+#include "paddle.h"
 
 int main(int argc, char *argv[])
 {

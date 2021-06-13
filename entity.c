@@ -1,32 +1,34 @@
+#include "sprite.h"
 #include "entity.h"
-#include "ball.c"
-#include "paddle.c"
+#include "ball.h"
+#include "paddle.h"
+#include "deltatime.h"
 
-void Entity_SetPosition(Entity* entity, float x, float y) {
+void Entity_SetPosition(Entity *entity, float x, float y) {
 	entity->x = x;
 	entity->y = y;
 	Sprite_SetPosition(&entity->sprite, x, y);
 }
 
-void Entity_SetVelocity(Entity* entity, float velx, float vely) {
+void Entity_SetVelocity(Entity *entity, float velx, float vely) {
 	entity->velx = velx;
 	entity->vely = vely;
 }
 
-void Entity_MoveX(Entity* entity, float speed) {
+void Entity_MoveX(Entity *entity, float speed) {
 	Entity_SetPosition(entity, entity->x + speed, entity->y);
 }
 
-void Entity_MoveY(Entity* entity, float speed) {
+void Entity_MoveY(Entity *entity, float speed) {
 	Entity_SetPosition(entity, entity->x, entity->y + speed);
 }
 
-void Entity_Update(Entity* entity) {
+void Entity_Update(Entity *entity) {
 	Entity_MoveX(entity, entity->velx * deltaTime);
 	Entity_MoveY(entity, entity->vely * deltaTime);
 }
 
-int Entity_TestCollision(Entity* entity, Entity* entity2) {
+int Entity_TestCollision(Entity *entity, Entity *entity2) {
 	
 	int eX = entity->x;
 	int eX2 = eX + entity->sprite.texr.w;
@@ -48,6 +50,6 @@ int Entity_TestCollision(Entity* entity, Entity* entity2) {
 	return 0;
 }
 
-void Entity_Dispose(Entity* entity) {
+void Entity_Dispose(Entity *entity) {
 	Sprite_Dispose(&entity->sprite);
 }

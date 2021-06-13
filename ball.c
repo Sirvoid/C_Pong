@@ -1,13 +1,21 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <SDL2/SDL.h>
 #include "ball.h"
+#include "sprite.h"
+#include "entity.h"
+#include "main.h"
 
-void Ball_Init(SDL_Renderer* renderer, Entity* entity) {
+
+void Ball_Init(SDL_Renderer *renderer, Entity *entity) {
 	Sprite_LoadImage(renderer, &entity->sprite, "images/ball.png");
 	entity->type = 1;
 	entity->velx = 0;
 	Ball_Respawn(entity);
 }
 
-void Ball_Update(Entity* ball, Entity* entities[]) {
+void Ball_Update(Entity *ball, Entity *entities[]) {
 	
 	for(int i = 0; i < 2; i++) {
 		if(Entity_TestCollision(ball, entities[i])) {
@@ -45,7 +53,7 @@ void Ball_Update(Entity* ball, Entity* entities[]) {
 	Entity_Update(ball);
 }
 
-void Ball_Respawn(Entity* ball) {
+void Ball_Respawn(Entity *ball) {
 	ball->y = HEIGHT / 2;
 	ball->x = WIDTH / 2;
 	
